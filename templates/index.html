@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Ming Chat</title>
+
+    <meta charset="UTF-8">
+
+    <meta name="keywords" content="Ming">
+    <meta name="keywords" content="ming">
+    <meta name="keywords" content="tecx">
+
+    <link href="../static/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/form.css" rel="stylesheet">
+</head>
+
+<body class="text-center">
+    <form action="/chat" method="POST" class="form-signin">
+        <h1 class="h2 mb-3 font-weight-normal">Ming Chat</h1><br><br>
+        <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus><br>
+        <input type="text" id="room" name="room" class="form-control" placeholder="Room" required><br>
+        <button class="btn btn-lg btn-primary btn-block" value="submit">Log Ming</button>
+    </form>
+
+    <script>
+        document.getElementsByTagName('form')[0].onsubmit = () => {
+            localStorage.user = document.getElementById('username').value;
+        }
+    </script>
+</body>
+
+</html>

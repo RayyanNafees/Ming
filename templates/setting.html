@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Settings</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="../static/libs/jquery.js"></script>
+    <link rel="stylesheet" href="../static/libs/font-awesome.css">
+    <link rel="stylesheet" href="../static/libs/bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://emoji-css.afeld.me/emoji.css">
+
+
+
+
+    <style>
+        body {
+            background: white;
+            color: black;
+        }
+        
+        code {
+            color: deepskyblue;
+        }
+        
+        #link {
+            border: 1px solid black;
+            width: max-content;
+            padding: 10px;
+            background: #efefef;
+            display: flex;
+            margin-right: 0px;
+        }
+        
+        #copy {
+            padding: 10px;
+            margin-left: 0px;
+        }
+        
+        #link,
+        #copy {
+            display: inline-flex
+        }
+        
+        #share span {
+            font-size: smaller;
+        }
+        
+        fieldset .btn {
+            border-radius: 100%;
+            height: 20px;
+        }
+    </style>
+    <script>
+        Q = query => document.querySelector(query);
+    </script>
+</head>
+
+<body>
+    <div id="setting">
+        <h4>Share</h4>
+        <p id="share">
+            <input id="recep" placeholder="Recepient's name (private)" data-emojiable=”true”><br>
+            <span>
+                <input type="checkbox"/>
+                <label>Get a public link</label>
+            </span>
+
+        </p>
+
+        <p id="link">
+            <code>https://livelyzone.herokuapp.com/enter/{{session.get('room ')}}</code>
+        </p>
+        <button id="copy"><i class="fa fa-copy"></i></button>
+
+        <fieldset>
+            <legend>Theme</legend>
+            <button type="button" class="btn btn-primary btn-rounded"></button>
+            <button type="button" class="btn btn-secondary btn-rounded"></button>
+            <button type="button" class="btn btn-success btn-rounded"></button>
+            <button type="button" class="btn btn-danger btn-rounded"> </button>
+            <button type="button" class="btn btn-warning btn-rounded"></button>
+            <button type="button" class="btn btn-info btn-rounded"></button>
+            <button type="button" class="btn btn-light btn-rounded"></button>
+            <button type="button" class="btn btn-dark btn-rounded"></button>
+        </fieldset>
+
+        <script>
+            let code = Q('code');
+            let room = Q('header div').innerText;
+            Q('input[type="checkbox"]').onchange = function() {
+                Q('#recep').disabled = this.checked;
+                if (this.checked)
+                    code.innerText = "https://livelyzone.herokuapp.com/enter/" + room;
+            };
+
+            Q('#copy').onclick = function copy() {
+                code.select();
+                document.execCommand('copy');
+            };
+
+            Q('#recep').oninput = function() {
+                code.innerText = `https://livelyzone.herokuapp.com/add?room=${room}&user=${this.value}`
+            }
+        </script>
+
+
+    </div>
+    <button id="trigger">Open emojis tab</button>
+    <div id="emojis">
+        {% for name in emojis_names %}
+
+        <i class="em em-{{name}}" aria-role="presentation" aria-label="{{name.upper()}}"></i> {% endfor %}
+    </div>
+
+    <script>
+        Q('#trigger').onclick = function() {
+            Q('#emojis').style.height = '100px';
+        };
+
+        document.body.onclick = function(e) {
+            if (e.target != Q('#emojis'))
+                Q('#emojis').style.height = '0px';
+        }
+    </script>
+</body>
+
+</html>

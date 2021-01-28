@@ -1,0 +1,130 @@
+@font-face {
+    src: url('../static/libs/fonts/Poppins.ttf');
+    font-family: 'Poppins';
+}
+
+* {
+    font-family: 'Poppins';
+    padding: 0;
+}
+
+header {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 96%;
+    background: #191970;
+}
+
+header div {
+    background: rgb(37, 4, 81);
+    color: white;
+    font-weight: bold;
+    width: 48%;
+    padding: 10px;
+    border-radius: 35px;
+    border: none;
+    text-align: center;
+    box-shadow: 0px -7px 5px 5px rgb(54, 3, 115) inset;
+}
+
+
+/* Head Ends */
+
+
+/* Below Buttons */
+
+form {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding-bottom: 10px;
+    padding-top: 6px;
+    width: 99%;
+    background: #191970;
+    height: auto;
+    z-index: 1;
+}
+
+
+/* Three Icons */
+
+
+/* Three Icons */
+
+#send,
+#arrows,
+#plus {
+    font-size: 32px;
+    margin: 5px;
+    color: white;
+}
+
+#send:hover,
+#arrows:hover,
+#plus:hover {
+    color: #0E75E6;
+}
+
+textarea {
+    padding: 10px;
+    outline: 0;
+    border: none;
+    border-radius: 20px;
+    width: 70%;
+    height: max-content;
+    margin-bottom: 5px;
+    resize: none;
+}
+
+
+/* Messages Bodies */
+
+
+/* Additional Classes */
+
+.sent {
+    padding: 6px;
+    margin-left: 5em;
+    border-radius: 9px;
+    background: white;
+    color: #191970;
+    text-align: right;
+    max-width: 68%;
+    display: block;
+    word-wrap: break-word;
+}
+
+.received {
+    padding: 8px;
+    margin: 0;
+    margin-right: 5em;
+    border: 1px solid white;
+    border-radius: 9px;
+    color: white;
+    text-align: left;
+    max-width: 68%;
+    display: block;
+    word-wrap: break-word;
+}
+
+.botimg {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    padding-bottom: 10px;
+}
+
+.status {
+    color: rgb(189, 188, 188);
+    font-size: x-small;
+}
