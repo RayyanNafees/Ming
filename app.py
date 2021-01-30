@@ -10,14 +10,17 @@ local = (__name__ == '__main__')
 
 socket = SocketIO(app, manage_session=False)
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
+
 
 @app.route('/temp')
 def bar():
     lis = open('static/emojis.txt').readlines()
     return render_template('setting.html', session=session, emojis_names = lis)
+
 
 @app.route('/enter/<room>')
 def foo(room):   
