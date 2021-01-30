@@ -43,25 +43,21 @@ def link(user, room):
 
 @app.route('/chat', methods=['GET', 'POST'])
 def chat():
-    
-    protcl = 'http' if local else 'https'
-    
+
     if request.method=='POST':  
         #Store the data in session
         session['username'] = request.form['username']
         session['room'] = request.form['room']
-        
-        return render_template('chat.html', session = session,
-                               protcl  = protcl,)
-    
-    elif request.method=='GET':
-        
+
+    elif request.method=='GET':        
         if 'username' not in session: return redirect('/')
 
-        else: return render_template('chat.html',
-                                    session = session,
-                                    protcl  = protcl,
-                                    )
+    protcl = 'http' if local else 'https'
+
+    return render_template('chat.html',
+                           session = session,
+                           protcl  = protcl,
+                           )
     
 
 @socket.on('join', namespace='/chat')
