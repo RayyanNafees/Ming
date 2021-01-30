@@ -46,23 +46,13 @@ socket.on('message', function(data) {
 window.onbeforeunload = function leave_room() {
     socket.emit('left', {}, function() {
         socket.disconnect();
-        window.location.href = "/"; // redirect('/')
+        location.href = "/"; // redirect('/')
     });
 };
 
 
 document.onvisibilitychange = function() {
-
-    if (document.hidden) {
-        let sleep = secs => { for (let x = new Date().getTime(); new Date().getTime() != x + secs * 1000;); };
-
-        while (document.hidden) {
-            document.title = stat;
-            sleep(0.5);
-            document.title = 'Ming Chat';
-            sleep(0.5);
-        }
-    } else document.title = 'Ming Chat';
+// To be editted as like fb (flickering document.title)
 };
 
 
