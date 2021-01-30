@@ -101,6 +101,7 @@
                 document.execCommand('copy');
             };
 
+
             Q('#recep').oninput = function() {
                 code.innerText = `https://livelyzone.herokuapp.com/add?room=${room}&user=${this.value}`
             }
