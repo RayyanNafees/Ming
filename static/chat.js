@@ -62,7 +62,7 @@ $(function() {
 
     function send() {
         let txt = $('#text');
-        let text = txt.val();
+        let text = txt.val().trim();
 
         if (text) {
             socket.emit('text', { msg: text });
