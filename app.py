@@ -52,12 +52,10 @@ def chat():
     elif request.method=='GET':        
         if 'username' not in session: return redirect('/')
 
-    protcl = 'http' if local else 'https'
+    protcl = 'http' if local else 'https'    
 
-    return render_template('chat.html',
-                           session = session,
-                           protcl  = protcl,
-                           )
+    return render_template('chat.html', session = session,
+                           protcl  = protcl, )
     
 
 @socket.on('join', namespace='/chat')

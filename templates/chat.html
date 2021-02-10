@@ -33,7 +33,7 @@
             z-index: 3;
             display: inline-block;
             vertical-align: middle;
-            font-family: 'jokerman arial', 'CurlzMT', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-family: 'jokerman arial', 'Curlz', 'CurlzMT', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
             font-size: 100px;
             margin-top: 20%;
         }
@@ -64,12 +64,21 @@
     </header><br />
 
 
-    <main id="messages"></main>
+    <main id="messages"><br></main>
+    <br><br><br>
 
 
     <form>
         <span id="arrows" class="fa fa-server"></span>
         <textarea id="text" rows="1" placeholder="Type your message"></textarea>
+        <div id="emojis">
+
+            {% for n,name in emojis %}
+
+            <i class="em em-{{name}}"></i> {% endfor %}
+
+        </div>
+        <i id="emtrig" class="fa fa-smile"></i>
         <span id="send" class="fa fa-send"></span>
     </form>
 
@@ -80,17 +89,13 @@
         var socket = io.connect('{{protcl}}://' + document.domain + ':' + location.port + '/chat');
 
         localStorage.user = "{{session.get('username')}}";
+
+        let sub = (q1, q2) => $(q1).height('-=' + $(q2).height());
+        sub('main#messages', 'form');
     </script>
     <script src="../static/chat.js"></script>
 
 
-
-
-
-
-
 </body>
-
-</html>
 
 </html>

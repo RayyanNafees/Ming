@@ -52,7 +52,7 @@ window.onbeforeunload = function leave_room() {
 
 
 document.onvisibilitychange = function() {
-// To be editted as like fb (flickering document.title)
+    // To be editted as like fb (flickering document.title)
 };
 
 
@@ -102,6 +102,8 @@ $(function() {
                     this.rows = String(n);
             }
         });
+    $('#messages').height(window.innerHeight - $('footer').height());
+
 });
 
 
