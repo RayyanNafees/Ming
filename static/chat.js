@@ -5,12 +5,13 @@ let mob = ('orientation' in window);
 let getcss = (query, style) => getComputedStyle(document.querySelector(query)).getPropertyValue(style);
 
 let msgwin = $('#messages'); // get msg window
+let base = $('#base');
 let stat = 'Ming Chat';
 
 socket.on('connect', () => socket.emit('join', {}));
 
 socket.on('status', function(data) {
-    msgwin.append('<center><p class="status">' + data.msg + '</p></center><br>');
+    base.before('<center><p class="status">' + data.msg + '</p></center><br>');
     msgwin.scrollTop(msgwin[0].scrollHeight);
 });
 
@@ -37,7 +38,7 @@ socket.on('message', function(data) {
         msgbox = $('<p class="sent">' + data.msg + '</p>');
 
 
-    msgwin.append(msgbox); // add it to msg element
+    base.before(msgbox); // add it to msg element
     msgwin.scrollTop(msgwin[0].scrollHeight * 2);
 
 });
@@ -93,15 +94,15 @@ $(function() {
                 this.value += '    ';
             }
 
-
-        })
-        .keyup(function(e) {
             if (e.which == 8 || e.which == 46) { // Backspace | Delete
                 let n = count('\n', this.value) + 1;
                 if (n < this.rows)
                     this.rows = String(n);
             }
-        });
+
+        })
+        .keyup(function(e) {});
+
     $('#messages').height(window.innerHeight - $('footer').height());
 
 });
