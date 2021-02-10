@@ -100,6 +100,11 @@ $(function() {
                     this.rows = String(n);
             }
 
+            if ([32, 9, 10, 13, 11, 12].includes(e.which)) { // on whitespace type
+                if (!$('#text').val()) // on empty textarea
+                    e.preventDefault();
+            }
+
         })
         .keyup(function(e) {});
 
