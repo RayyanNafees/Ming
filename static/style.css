@@ -93,11 +93,10 @@ textarea {
 /* Additional Classes */
 
 .sent {
-    padding: 6px;
     margin-left: 5em;
     margin-top: 5px;
     margin-bottom: 0;
-    border-radius: 20px;
+    border-radius: 15px 0 0 15px;
     background: white;
     color: #191970;
     text-align: right;
@@ -107,16 +106,20 @@ textarea {
 }
 
 .received {
-    padding: 8px;
     margin: 0;
     margin-right: 5em;
     border: 1px solid white;
-    border-radius: 9px;
+    border-radius: 0 15px 15px 0;
     color: white;
     text-align: left;
     max-width: 68%;
     display: block;
     word-wrap: break-word;
+}
+
+.sent,
+.received {
+    padding: 3px;
 }
 
 .botimg {

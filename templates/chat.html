@@ -90,7 +90,7 @@
 
         localStorage.user = "{{session.get('username')}}";
 
-        let sub = (q1, q2) => $(q1).height('-=' + $(q2).height());
+        let sub = (q1, q2) => $(q1).height($(q1).height() - $(q2).height());
         sub('main#messages', 'form');
     </script>
     <script src="../static/chat.js"></script>
