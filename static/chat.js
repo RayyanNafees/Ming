@@ -61,12 +61,13 @@ document.onvisibilitychange = function() {
 
 function UI() {
     p = document.querySelectorAll('p.sent, p.received');
-    _p = p[p.length - 1];
+    for (let _p of p) {
 
-    if (_p.class == 'sent')
-        $(_p).css('margin-left', window.innerWidth - $(this).width);
-    else
-        $(_p).css('margin-right', window.innerWidth - $(this).width);
+        if (_p.class == 'sent')
+            _p.style.marginRight = (window.innerWidth - $(_p).width()) + 'px';
+        else
+            _p.style.marginLeft = (window.innerWidth - $(_p).width()) + 'px';
+    }
 }
 
 /*______________ jQuery methods ________*/

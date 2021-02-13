@@ -120,6 +120,7 @@ textarea {
 .sent,
 .received {
     padding: 3px;
+    width: max-content;
 }
 
 .botimg {
