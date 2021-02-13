@@ -42,6 +42,7 @@ socket.on('message', function(data) {
     base.before(msgbox); // add it to msg element
     msgwin.scrollTop(msgwin[0].scrollHeight * 2);
 
+    UI();
 });
 
 
@@ -57,6 +58,16 @@ document.onvisibilitychange = function() {
     // To be editted as like fb (flickering document.title)
 };
 
+
+function UI() {
+    p = document.querySelectorAll('p.sent, p.received');
+    _p = p[p.length - 1];
+
+    if (_p.class == 'sent')
+        $(_p).css('margin-left', window.innerWidth - $(this).width);
+    else
+        $(_p).css('margin-right', window.innerWidth - $(this).width);
+}
 
 /*______________ jQuery methods ________*/
 
@@ -115,7 +126,9 @@ $(function() {
 
     $('#plus').click(function() {
 
-        copyText = 'https://preming.herokuapp.com/enter/' + localStorage.room;
+        let txt = 'https://preming.herokuapp.com/enter/' + localStorage.room;
+
+        let copyText = $('<div>' + txt + '</div>')[0]
 
         copyText.select();
         copyText.setSelectionRange(0, 99999); /* For mobile devices */
