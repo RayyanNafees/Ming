@@ -18,6 +18,7 @@ socket.on('status', function(data) {
 
 socket.on('message', function(data) {
 
+    msg = data.msg.replace(/\n/g, '<br>')
 
     if (data.user != localStorage.user) {
         // main.append(`<br><p class="received"><span class="usr">${data.user}</span></br>${data.msg}</p><br>`);
@@ -25,17 +26,17 @@ socket.on('message', function(data) {
         botImg = $('#logo').clone(); // create <img>
         botImg.addClass('botimg');
 
-        msgbox = $(`<div class="received"></div>`); // create the botbox
+        msgbox = $(`<p align="left" class="received"></p>`); // create the botbox
 
         msgbox.prepend(botImg);
-        msgbox.append(data.msg);
+        msgbox.append(msg);
 
         if (document.hidden) {
             stat = data.user + 'messaged';
             new Notification(data.user, { body: data.msg, icon: botimg.attr('src') });
         }
     } else
-        msgbox = $('<p class="sent">' + data.msg + '</p>');
+        msgbox = $('<p align="right" class="sent">' + msg + '</p>');
 
 
     base.before(msgbox); // add it to msg element
@@ -109,6 +110,22 @@ $(function() {
         .keyup(function(e) {});
 
     $('#messages').height(window.innerHeight - $('footer').height());
+
+    if (mob) { $('body').css({ margin: 0, padding: 0 }) }
+
+    $('#plus').click(function() {
+
+        copyText = 'https://preming.herokuapp.com/enter/' + localStorage.room;
+
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+        /* Copy the text inside the text field */
+        document.execCommand("copy");
+
+        /* Alert the copied text */
+        alert("link Copied: " + copyText);
+    })
 
 });
 

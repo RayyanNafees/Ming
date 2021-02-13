@@ -46,7 +46,7 @@
 
 
     <link rel="stylesheet" href="../static/libs/font-awesome.css" media="all" />
-    <link rel="stylesheet" href="../static/style.css?55" />
+    <link rel="stylesheet" href="../static/style.css" />
     <link rel="stylesheet" href="../static/modal.css">
 
     <script src="../static/libs/jquery.js"></script>
@@ -89,11 +89,12 @@
         var socket = io.connect('{{protcl}}://' + document.domain + ':' + location.port + '/chat');
 
         localStorage.user = "{{session.get('username')}}";
+        localStorage.room = "{{session.get('room')}}"
 
         let sub = (q1, q2) => $(q1).height($(q1).height() - $(q2).height());
         sub('main#messages', 'form');
     </script>
-    <script src="../static/chat.js?12"></script>
+    <script src="../static/chat.js?768"></script>
 
 
 </body>

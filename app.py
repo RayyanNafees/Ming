@@ -69,7 +69,7 @@ def join(message):
 @socket.on('text', namespace='/chat')
 def text(message):
     room = session.get('room')
-    text = escape(message['msg']).replace('\n','<br>')
+    text = escape(message['msg'])
     emit('message', {'msg': text, 'user':session.get('username')}, room=room)
 
 
