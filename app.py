@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, escape
 from flask_socketio import SocketIO, join_room, leave_room, emit
 
 app = Flask(__name__)
@@ -69,7 +69,7 @@ def join(message):
 @socket.on('text', namespace='/chat')
 def text(message):
     room = session.get('room')
-    text = message['msg'].replace('\n','<br>')
+    text = escape(message['msg']).replace('\n','<br>')
     emit('message', {'msg': text, 'user':session.get('username')}, room=room)
 
 
