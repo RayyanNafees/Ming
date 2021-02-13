@@ -73,6 +73,11 @@ def text(message):
     emit('message', {'msg': text, 'user':session.get('username')}, room=room)
 
 
+@socket.on('attach', namespace='/chat')
+def inform(data): 
+    room = session.get('room')   
+    emit('message', {'msg':str(data),'user':session.get('username') }, room=room)
+
 @socket.on('left', namespace='/chat')
 def left(message):
     room = session.get('room')

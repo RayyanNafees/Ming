@@ -64,9 +64,9 @@ function UI() {
     for (let _p of p) {
 
         if (_p.class == 'sent')
-            _p.style.marginRight = (window.innerWidth - $(_p).width()) + 'px';
+            _p.style.marginRight = (window.innerWidth - $(_p).width() - 20) + 'px';
         else
-            _p.style.marginLeft = (window.innerWidth - $(_p).width()) + 'px';
+            _p.style.marginLeft = (window.innerWidth - $(_p).width() - 20) + 'px';
     }
 }
 
@@ -129,7 +129,7 @@ $(function() {
 
         let txt = 'https://preming.herokuapp.com/enter/' + localStorage.room;
 
-        let copyText = $('<div>' + txt + '</div>')[0]
+        let copyText = $('<div hidden>' + txt + '</div>');
 
         copyText.select();
         copyText.setSelectionRange(0, 99999); /* For mobile devices */
@@ -139,7 +139,17 @@ $(function() {
 
         /* Alert the copied text */
         alert("link Copied: " + copyText);
-    })
+    });
+
+    $('#arrows').click(function() {
+        let img = $('#img-att');
+        img.click();
+        if (img.val()) {
+            let form = new FormData();
+            form.append('attch', img[0].files[0]);
+            socket.emit('attach', { 'file': form }, () => alert('sent successfuly'));
+        }
+    });
 
 });
 

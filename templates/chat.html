@@ -47,7 +47,7 @@
 
 
     <link rel="stylesheet" href="../static/libs/font-awesome.css" media="all" />
-    <link rel="stylesheet" href="../static/style.css" />
+    <link rel="stylesheet" href="../static/style.css?4568" />
     <link rel="stylesheet" href="../static/modal.css">
 
     <script src="../static/libs/jquery.js"></script>
@@ -71,6 +71,9 @@
 
     <form>
         <span id="arrows" class="fa fa-server"></span>
+        <div id="#attch" hidden>
+            <input id="img-att" type="file" accept="image/*" />
+        </div>
         <textarea id="text" rows="1" placeholder="Type your message"></textarea>
         <div id="emojis">
 
@@ -95,7 +98,7 @@
         let sub = (q1, q2) => $(q1).height($(q1).height() - $(q2).height());
         sub('main#messages', 'form');
     </script>
-    <script src="../static/chat.js?81263"></script>
+    <script src="../static/chat.js?9856"></script>
 
 
 </body>
